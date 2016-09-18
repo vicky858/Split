@@ -23,6 +23,7 @@
 }
 @property NSMutableArray *objects;
 @property SQLiteManager *sqlManager;
+@property BOOL Editing;
 //@property UIRefreshControl *refreshControl;
 
 @end
@@ -33,10 +34,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    _editBtn = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(editBtnAction:)];
+    [self.navigationItem setRightBarButtonItem:_editBtn];
+    
         
     _patientList = [[NSMutableArray alloc]init];
-    [self getPatientDetails];
-    
     
     // Initialize the refresh control.
 //    self.refreshControl = [[UIRefreshControl alloc] init];
@@ -55,106 +57,6 @@
     patientObj.gender = @"Male";
     patientObj.age = @"25 Years Old(06/08/1984)";
     patientObj.mailId= @"peter@hotmail.com";
-    patientObj.primayContactNo= @"9865777711";
-    patientObj.secondaryContactNo= @"033-777711";
-    patientObj.language=@"English";
-    patientObj.financialClass= @"Commerical";
-    patientObj.financialPayer= @"Humana";
-    patientObj.nextAppointmentDate = @"09/08/2016";
-    patientObj.appDocName = @"Sam";
-    patientObj.lastAppDate = @"10/08/2017";
-    patientObj.lastVisit = @"OfficalVisit";
-    patientObj.transportation = @"None";
-    patientObj.refDoc =@"Dr.GoldBerg";
-    patientObj.lastSeenDoc=@"Dr.Escobar";
-    patientObj.LastVisitDocAdd = @"Mimai Beach";
-    patientObj.diagonises = @"Paralysis";
-    patientObj.diganosesDate =@"09/02/2013";
-    patientObj.allergies = @"Latex";
-    patientObj.perfPharmacy = @"Omega Pharmacy";
-    [_patientList addObject:patientObj];
-
-    patientObj = [[PatientDetails alloc]init];
-    patientObj.usrImg = @"Male2.jpg";
-    patientObj.usrName = @"John";
-    patientObj.gender = @"Male";
-    patientObj.age = @"26 Years Old(06/08/1984)";
-    patientObj.mailId= @"john@hotmail.com";
-    patientObj.primayContactNo= @"9865777711";
-    patientObj.secondaryContactNo= @"033-777711";
-    patientObj.language=@"English";
-    patientObj.financialClass= @"Commerical";
-    patientObj.financialPayer= @"Humana";
-    patientObj.nextAppointmentDate = @"09/08/2016";
-    patientObj.appDocName = @"Sam";
-    patientObj.lastAppDate = @"10/08/2017";
-    patientObj.lastVisit = @"OfficalVisit";
-    patientObj.transportation = @"None";
-    patientObj.refDoc =@"Dr.GoldBerg";
-    patientObj.lastSeenDoc=@"Dr.Escobar";
-    patientObj.LastVisitDocAdd = @"Mimai Beach";
-    patientObj.diagonises = @"Paralysis";
-    patientObj.diganosesDate =@"09/02/2013";
-    patientObj.allergies = @"Latex";
-    patientObj.perfPharmacy = @"Omega Pharmacy";
-    [_patientList addObject:patientObj];
-    
-    patientObj = [[PatientDetails alloc]init];
-    patientObj.usrImg = @"Male3.jpg";
-    patientObj.usrName = @"Anderson";
-    patientObj.gender = @"Male";
-    patientObj.age = @"25 Years Old(06/08/1984)";
-    patientObj.mailId= @"anderson@hotmail.com";
-    patientObj.primayContactNo= @"9865777711";
-    patientObj.secondaryContactNo= @"033-777711";
-    patientObj.language=@"English";
-    patientObj.financialClass= @"Commerical";
-    patientObj.financialPayer= @"Humana";
-    patientObj.nextAppointmentDate = @"09/08/2016";
-    patientObj.appDocName = @"Sam";
-    patientObj.lastAppDate = @"10/08/2017";
-    patientObj.lastVisit = @"OfficalVisit";
-    patientObj.transportation = @"None";
-    patientObj.refDoc =@"Dr.GoldBerg";
-    patientObj.lastSeenDoc=@"Dr.Escobar";
-    patientObj.LastVisitDocAdd = @"Mimai Beach";
-    patientObj.diagonises = @"Paralysis";
-    patientObj.diganosesDate =@"09/02/2013";
-    patientObj.allergies = @"Latex";
-    patientObj.perfPharmacy = @"Omega Pharmacy";
-    [_patientList addObject:patientObj];
-
-    patientObj = [[PatientDetails alloc]init];
-    patientObj.usrImg = @"Male4.jpg";
-    patientObj.usrName = @"Thomas";
-    patientObj.gender = @"Male";
-    patientObj.age = @"25 Years Old(06/08/1984)";
-    patientObj.mailId= @"thomas@hotmail.com";
-    patientObj.primayContactNo= @"9865777711";
-    patientObj.secondaryContactNo= @"033-777711";
-    patientObj.language=@"English";
-    patientObj.financialClass= @"Commerical";
-    patientObj.financialPayer= @"Humana";
-    patientObj.nextAppointmentDate = @"09/08/2016";
-    patientObj.appDocName = @"Sam";
-    patientObj.lastAppDate = @"10/08/2017";
-    patientObj.lastVisit = @"OfficalVisit";
-    patientObj.transportation = @"None";
-    patientObj.refDoc =@"Dr.GoldBerg";
-    patientObj.lastSeenDoc=@"Dr.Escobar";
-    patientObj.LastVisitDocAdd = @"Mimai Beach";
-    patientObj.diagonises = @"Paralysis";
-    patientObj.diganosesDate =@"09/02/2013";
-    patientObj.allergies = @"Latex";
-    patientObj.perfPharmacy = @"Omega Pharmacy";
-    [_patientList addObject:patientObj];
-
-    patientObj = [[PatientDetails alloc]init];
-    patientObj.usrImg = @"Female1.jpeg";
-    patientObj.usrName = @"Ana Gomez";
-    patientObj.gender = @"Female";
-    patientObj.age = @"25 Years Old(06/08/1984)";
-    patientObj.mailId= @"anagomez@hotmail.com";
     patientObj.primayContactNo= @"9865777711";
     patientObj.secondaryContactNo= @"033-777711";
     patientObj.language=@"English";
@@ -199,10 +101,6 @@
     patientObj.perfPharmacy = @"Omega Pharmacy";
     [_patientList addObject:patientObj];
      */
-
-    self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject]
-     topViewController];
-    
    
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
@@ -216,6 +114,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     self.clearsSelectionOnViewWillAppear = self.splitViewController.isCollapsed;
     [super viewWillAppear:animated];
+    [self getPatientDetails];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -229,7 +129,7 @@
 
     //fetch only male :
     //FMResultSet *resultSet = [_sqlManager ExecuteQuery:@"SELECT * FROM PatientDetails where Gender = "Male""];
-    
+    [_sqlManager OpenDB:[_sqlManager GetDBPath]];
     FMResultSet *resultSet = [_sqlManager ExecuteQuery:@"SELECT * FROM PatientDetails"];
     while ([resultSet next]) {
         patientObj = [[PatientDetails alloc]init];
@@ -258,28 +158,18 @@
         patientObj.perfPharmacy = [resultSet stringForColumn:@"PharamacyName"];
         [_patientList addObject:patientObj];
     }
-}
-
--(void)insertPatient{
-    
-//    NSString *paID = @"1";
-//    _sqlManager = [[SQLiteManager alloc] init];
-//     BOOL isInserted = [_sqlManager ExecuteUpdateQuery:@"INSERT INTO PatientDetails (fieldName, fieldName, fieldName, fieldName) VALUES (?, ?, ?, ?)", @"",  @"", @"", @"", nil];
-    
-    
-}
-
--(void)updatePatient{
-    _sqlManager = [[SQLiteManager alloc] init];
-    BOOL isUpdated = [_sqlManager ExecuteUpdateQuery:[NSString stringWithFormat:@"UPDATE PatientDetails set EmailID= '%@' where PatientID= '%d'",@"peter_s@gmail.com", 1]];
-    NSLog(@"Updated Status %d",isUpdated);
+    [resultSet close];
+    [self.tableView reloadData];
 }
 
 
--(void)deletePatient{
+-(void)deletePatient:(NSNumber *)patientID{
      _sqlManager = [[SQLiteManager alloc] init];
-    BOOL isDeleted = [_sqlManager ExecuteUpdateQuery:[NSString stringWithFormat:@"DELETE FROM PatientDetails WHERE PatientID= %d and UserName= '%@'", 2, @"John", nil]];
+    BOOL isDeleted = [_sqlManager ExecuteUpdateQuery:[NSString stringWithFormat:@"DELETE FROM PatientDetails WHERE PatientID= %d", [patientID intValue], nil]];
     NSLog(@"Deleted Status %d",isDeleted);
+    if(isDeleted){
+        [self getPatientDetails];
+    }
 }
 /*
 -(void)getPatientDetails{
@@ -334,24 +224,22 @@
 #pragma mark - Segues
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+    if([[segue identifier] isEqualToString:@"showDetail"] && sender == nil){
+        DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
+        [controller setPatientList:_patientList];
+        [controller setPatDetails:nil];
+        controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+        controller.navigationItem.leftItemsSupplementBackButton = YES;
+    }else if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        if(_patientList.count == 0){
+            [self getPatientDetails];
+        }
         if(_patientList.count>0){
-            
-//            if(indexPath.row==0){
-//                [self updatePatient];
-//                [self getPatientDetails];
-//                [self.tableView reloadData];
-//            }
-//            
-//            if(indexPath.row==1){
-//                [self deletePatient];
-//                [self getPatientDetails];
-//                [self.tableView reloadData];
-//            }
             
             patientObj = _patientList[indexPath.row];
             DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
+            [controller setPatientList:_patientList];
             [controller setPatDetails:patientObj];
             controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
             controller.navigationItem.leftItemsSupplementBackButton = YES;
@@ -402,7 +290,9 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return _patientList.count;
+    int count = [self.patientList count];
+    if(self.editing) count++;
+    return count;
 }
 
 
@@ -418,18 +308,25 @@
                 reuseIdentifier:CellIdentifier];
     }
     
+    int count = 0;
+    if(self.editing && indexPath.row != 0)
+        count = 1;
+    if(indexPath.row == ([self.patientList count]) && self.editing){
+        UIImage *cellImage = [UIImage imageNamed:@"person-man"];
+        cell.imgView.image = cellImage;
+        cell.imgView.backgroundColor = [UIColor colorWithRed:(20.0f/255.0f) green:(173.0f/255.0f) blue:(199.0f/255.0f) alpha:1.0];
+        cell.imgView.layer.masksToBounds = YES;
+        cell.imgView.layer.cornerRadius = 32.0f;
+        cell.nameLbl.text = @"Add Patient";
+        return cell;
+    }
+    
     //NSDate *object = _objects[indexPath.row];
     //cell.textLabel.text = [object description];
     patientObj = _patientList[indexPath.row];
     
     UIImage *cellImage = [UIImage imageNamed:patientObj.usrImg];
     cell.imgView.image = cellImage;
-    
-//    CGFloat widthScale = cellImage.size.width / cell.frame.size.width;
-//    CGFloat heightScale = cellImage.size.height / cell.frame.size.height;
-    //this line will do it!
-    //cell.imgView.transform = CGAffineTransformMakeScale(0.5, 0.5);
-    
     
     cell.imgView.backgroundColor = [UIColor colorWithRed:(20.0f/255.0f) green:(173.0f/255.0f) blue:(199.0f/255.0f) alpha:1.0];
     cell.imgView.layer.masksToBounds = YES;
@@ -446,18 +343,61 @@
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle) editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        patientObj = _patientList[indexPath.row];
+        [self deletePatient:patientObj.patientID];
+    }
+    else if (editingStyle == UITableViewCellEditingStyleInsert)
+    {
+        //[self.patientList insertObject:@"New Patient" atIndex:[self.patientList count]];
+        //[tableView reloadData];
+        [self editBtnAction:nil];
+        [self performSegueWithIdentifier:@"showDetail" sender:nil];
+        self.splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModePrimaryHidden;
+        UINavigationController *navigationController = [self.splitViewController.viewControllers lastObject];
+        navigationController.topViewController.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+    }
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.editing == NO || !indexPath)
+        return UITableViewCellEditingStyleNone;
+    
+    if (self.editing && indexPath.row == ([self.patientList count]))
+        return UITableViewCellEditingStyleInsert;
+    else
+        return UITableViewCellEditingStyleDelete;
+    
+    return UITableViewCellEditingStyleNone;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSString *urlString = [_siteAddresses objectAtIndex:indexPath.row];
-//    _detailViewController.webView.scalesPageToFit = YES;
-//    NSURL *url = [NSURL URLWithString:urlString];
-//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//    [self.detailViewController.webView loadRequest:request];
-    
     self.splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModePrimaryHidden;
     UINavigationController *navigationController = [self.splitViewController.viewControllers lastObject];
     navigationController.topViewController.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
-    
-    
+}
+- (void)editBtnAction:(id)sender {
+    if(self.editing)
+    {
+        [super setEditing:NO animated:NO];
+        [self.tableView setEditing:NO animated:NO];
+        [self.tableView reloadData];
+        [self.navigationItem.rightBarButtonItem setTitle:@"Edit"];
+        [self.navigationItem.rightBarButtonItem setStyle:UIBarButtonItemStylePlain];
+    }
+    else
+    {
+        [super setEditing:YES animated:YES];
+        [self.tableView setEditing:YES animated:YES];
+        [self.tableView reloadData];
+        [self.navigationItem.rightBarButtonItem setTitle:@"Done"];
+        [self.navigationItem.rightBarButtonItem setStyle:UIBarButtonItemStyleDone];
+    }
 }
 @end

@@ -10,31 +10,39 @@
 #import <Charts/Charts.h>
 #import "PatientDetails.h"
 
-@interface DetailViewController : UIViewController
-
+@interface DetailViewController : UIViewController<UITextViewDelegate, UITextFieldDelegate>{
+    BOOL editMode;
+    BOOL addMode;
+}
+@property (strong, nonatomic) NSMutableArray* patientList;
 @property (strong, nonatomic) PatientDetails* patDetails;
 @property (strong, nonatomic) IBOutlet UIImageView *usrImg;
-@property (strong, nonatomic) IBOutlet UILabel *usrName;
-@property (strong, nonatomic) IBOutlet UILabel *gender;
-@property (strong, nonatomic) IBOutlet UILabel *age;
-@property (strong, nonatomic) IBOutlet UILabel *mailId;
-@property (strong, nonatomic) IBOutlet UILabel *primayContactNo;
-@property (strong, nonatomic) IBOutlet UILabel *secondaryContactNo;
-@property (strong, nonatomic) IBOutlet UILabel *language;
-@property (strong, nonatomic) IBOutlet UILabel *financialClass;
-@property (strong, nonatomic) IBOutlet UILabel *financialPayer;
-@property (strong, nonatomic) IBOutlet UILabel *nextAppointmentDate;
-@property (strong, nonatomic) IBOutlet UILabel *appDocName;
-@property (strong, nonatomic) IBOutlet UILabel *lastAppDate;
-@property (strong, nonatomic) IBOutlet UILabel *lastVisit;
-@property (strong, nonatomic) IBOutlet UILabel *transportation;
-@property (strong, nonatomic) IBOutlet UILabel *refDoc;
-@property (strong, nonatomic) IBOutlet UILabel *lastSeenDoc;
-@property (strong, nonatomic) IBOutlet UILabel *LastVisitDocAdd;
-@property (strong, nonatomic) IBOutlet UILabel *diagonises;
-@property (strong, nonatomic) IBOutlet UILabel *diganosesDate;
-@property (strong, nonatomic) IBOutlet UILabel *allergies;
-@property (strong, nonatomic) IBOutlet UILabel *perfPharmacy;
+@property (strong, nonatomic) IBOutlet UITextField *usrName;
+@property (strong, nonatomic) IBOutlet UITextField *gender;
+@property (strong, nonatomic) IBOutlet UITextField *age;
+@property (strong, nonatomic) IBOutlet UITextField *mailId;
+@property (strong, nonatomic) IBOutlet UITextField *primayContactNo;
+@property (strong, nonatomic) IBOutlet UITextField *secondaryContactNo;
+@property (strong, nonatomic) IBOutlet UITextField *language;
+@property (strong, nonatomic) IBOutlet UITextField *financialClass;
+@property (strong, nonatomic) IBOutlet UITextField *financialPayer;
+@property (strong, nonatomic) IBOutlet UITextField *nextAppointmentDate;
+@property (strong, nonatomic) IBOutlet UITextField *appDocName;
+@property (strong, nonatomic) IBOutlet UITextField *lastAppDate;
+@property (strong, nonatomic) IBOutlet UITextField *lastVisit;
+@property (strong, nonatomic) IBOutlet UITextField *transportation;
+@property (strong, nonatomic) IBOutlet UITextField *refDoc;
+@property (strong, nonatomic) IBOutlet UITextField *lastSeenDoc;
+@property (strong, nonatomic) IBOutlet UITextField *LastVisitDocAdd;
+@property (strong, nonatomic) IBOutlet UITextField *diagonises;
+@property (strong, nonatomic) IBOutlet UITextField *diganosesDate;
+@property (strong, nonatomic) IBOutlet UITextField *allergies;
+@property (strong, nonatomic) IBOutlet UITextView *perfPharmacy;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *editBtn;
+@property (strong, nonatomic) IBOutlet UIButton *insertSaveBtn;
 
+- (IBAction)insertPatient:(id)sender;
+- (void)addPatientAction;
+-(IBAction)editAction:(id)sender;
 @end
 

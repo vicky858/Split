@@ -14,12 +14,14 @@
 
 @interface MasterViewController : UITableViewController
 
+@property (strong, nonatomic) UIBarButtonItem *editBtn;
 
 
 @property (nonatomic, strong) NSMutableArray *patientList;
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 
+- (void)editBtnAction:(id)sender;
 
 @end
 
