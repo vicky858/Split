@@ -22,7 +22,7 @@ FMDatabase *db;
 	NSString *documentsDirectory = [paths objectAtIndex:0];
 	
 	//Create the complete path to the database file.
-	return [documentsDirectory stringByAppendingPathComponent:@"PatientDB.sqlite"];
+	return [documentsDirectory stringByAppendingPathComponent:@"LocalPatientDB.sqlite"];
 }
 
 -(void)createDatabaseIfNeeded{
@@ -40,7 +40,7 @@ FMDatabase *db;
 	NSString *documentsDirectory = [paths objectAtIndex:0];
 	
 	//Create the complete path to the database file.
-	NSString *databasePath = [documentsDirectory stringByAppendingPathComponent:@"PatientDB.sqlite"];
+	NSString *databasePath = [documentsDirectory stringByAppendingPathComponent:@"LocalPatientDB.sqlite"];
 	
 	//Check if the file exists or not.
 	success = [FileManager fileExistsAtPath:databasePath];
@@ -53,7 +53,7 @@ FMDatabase *db;
 	}
 	
 	//the database does not exists, so we will copy it to the users document directory]
-	NSString *dbPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"PatientDB.sqlite"];
+	NSString *dbPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"LocalPatientDB.sqlite"];
 	
 	//Copy the database file to the users document directory.
 	success = [FileManager copyItemAtPath:dbPath toPath:databasePath error:&error];

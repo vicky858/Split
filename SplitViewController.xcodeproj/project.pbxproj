@@ -21,7 +21,7 @@
 		217C51461D9307FD00CA4CD9 /* SyncViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 217C51451D9307FD00CA4CD9 /* SyncViewController.m */; };
 		217C514A1D931DB000CA4CD9 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 217C51491D931DB000CA4CD9 /* AFNetworking.framework */; };
 		217C514B1D931DB000CA4CD9 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 217C51491D931DB000CA4CD9 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		217C51551D93483200CA4CD9 /* PatientDB.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 217C51541D93482500CA4CD9 /* PatientDB.sqlite */; };
+		217C51551D93483200CA4CD9 /* LocalPatientDB.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 217C51541D93482500CA4CD9 /* LocalPatientDB.sqlite */; };
 		217C51581D934D2F00CA4CD9 /* PatientDetails.json in Resources */ = {isa = PBXBuildFile; fileRef = 217C51571D934D2F00CA4CD9 /* PatientDetails.json */; };
 		2F1C6C5F1D8965ED00BB1205 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F1C6C5E1D8965ED00BB1205 /* libsqlite3.tbd */; };
 		2F40C0AA1D812FFF0010CBDD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F40C0A91D812FFF0010CBDD /* main.m */; };
@@ -122,7 +122,7 @@
 		217C51441D9307FD00CA4CD9 /* SyncViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncViewController.h; sourceTree = "<group>"; };
 		217C51451D9307FD00CA4CD9 /* SyncViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncViewController.m; sourceTree = "<group>"; };
 		217C51491D931DB000CA4CD9 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = "<group>"; };
-		217C51541D93482500CA4CD9 /* PatientDB.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = PatientDB.sqlite; sourceTree = "<group>"; };
+		217C51541D93482500CA4CD9 /* LocalPatientDB.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = LocalPatientDB.sqlite; sourceTree = "<group>"; };
 		217C51571D934D2F00CA4CD9 /* PatientDetails.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PatientDetails.json; sourceTree = "<group>"; };
 		2F1C6C5E1D8965ED00BB1205 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		2F40C0A51D812FFF0010CBDD /* SplitViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplitViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,7 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				217C51571D934D2F00CA4CD9 /* PatientDetails.json */,
-				217C51541D93482500CA4CD9 /* PatientDB.sqlite */,
+				217C51541D93482500CA4CD9 /* LocalPatientDB.sqlite */,
 				2F40C0A91D812FFF0010CBDD /* main.m */,
 				210F1EDE1D8289E200D20810 /* SplitViewController-Bridging-Header.h */,
 			);
@@ -390,7 +390,7 @@
 				2F40C15A1D8185530010CBDD /* PatientDashboard.png in Resources */,
 				2F40C0BB1D812FFF0010CBDD /* LaunchScreen.storyboard in Resources */,
 				2F40C0B81D812FFF0010CBDD /* Assets.xcassets in Resources */,
-				217C51551D93483200CA4CD9 /* PatientDB.sqlite in Resources */,
+				217C51551D93483200CA4CD9 /* LocalPatientDB.sqlite in Resources */,
 				2F7A1AA31D894CFC00CCFDF6 /* Main.storyboard in Resources */,
 				2F40C0D81D8142D00010CBDD /* about.html in Resources */,
 				217C51581D934D2F00CA4CD9 /* PatientDetails.json in Resources */,
