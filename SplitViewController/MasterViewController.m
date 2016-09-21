@@ -12,6 +12,7 @@
 #import "MyTableViewCell.h"
 #import "SQLiteManager.h"
 #import "FMResultSet.h"
+#import "AppDelegate.h"
 
 
 @interface MasterViewController ()
@@ -399,5 +400,10 @@
         [self.navigationItem.rightBarButtonItem setTitle:@"Done"];
         [self.navigationItem.rightBarButtonItem setStyle:UIBarButtonItemStyleDone];
     }
+}
+
+- (IBAction)goToSyncAction:(id)sender {
+    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    [delegate showSyncView];
 }
 @end

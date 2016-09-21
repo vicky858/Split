@@ -12,7 +12,7 @@
 
 @interface DetailViewController : UIViewController<UITextViewDelegate, UITextFieldDelegate>{
     BOOL editMode;
-    BOOL addMode;
+    //BOOL addMode;
 }
 @property (strong, nonatomic) NSMutableArray* patientList;
 @property (strong, nonatomic) PatientDetails* patDetails;
@@ -41,8 +41,8 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *editBtn;
 @property (strong, nonatomic) IBOutlet UIButton *insertSaveBtn;
 
-- (IBAction)insertPatient:(id)sender;
-- (void)addPatientAction;
+//- (IBAction)insertPatient:(id)sender;
+//- (void)addPatientAction;
 -(IBAction)editAction:(id)sender;
 @end
 

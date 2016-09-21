@@ -96,16 +96,16 @@
     [self populateChartData];
     
     editMode = NO;
-    addMode = NO;
+    //addMode = NO;
     //    [self setUpPieChartView];
 //    [self populatePieChartData];
     
-    if(_patDetails == nil){
-        [self addPatientAction];
-    }
+//    if(_patDetails == nil){
+//        [self addPatientAction];
+//    }
 }
 
-
+/*
 - (void)addPatientAction{
     if(editMode){
         return;
@@ -167,11 +167,12 @@
     }
     
 }
+ */
 
 -(IBAction)editAction:(id)sender{
-    if(addMode){
-        return;
-    }
+//    if(addMode){
+//        return;
+//    }
     if(!editMode){
         UIBarButtonItem *editBtn = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(editAction:)];
         self.navigationItem.rightBarButtonItem = editBtn;
@@ -318,7 +319,7 @@
         [_perfPharmacy.layer setBorderWidth: 0.0];
         [_perfPharmacy.layer setCornerRadius:8.0f];
         [_perfPharmacy.layer setMasksToBounds:NO];
-        addMode = NO;
+//        addMode = NO;
         editMode = NO;
         _insertSaveBtn.hidden = YES;
     }
@@ -675,6 +676,7 @@
     }
     return editMode;
 }
+
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView{
     self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [textView resignFirstResponder];

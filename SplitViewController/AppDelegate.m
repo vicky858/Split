@@ -7,10 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "SyncViewController.h"
 #import "DetailViewController.h"
 
-@interface AppDelegate () <UISplitViewControllerDelegate>
-
+@interface AppDelegate () <UISplitViewControllerDelegate>{
+    UIStoryboard *mainStoryboard;
+}
 @end
 
 @implementation AppDelegate
@@ -18,11 +20,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
+    
+    mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
+                                                             bundle: [NSBundle mainBundle]];
+    
+    UISplitViewController *splitViewController = (UISplitViewController*)[mainStoryboard
+                                                       instantiateViewControllerWithIdentifier: @"SplitViewController"];
+    
     splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModePrimaryHidden;
     UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
     navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem;
     splitViewController.delegate = self;
+    
     return YES;
 }
 
@@ -48,6 +57,10 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+//-(void)showSplitView{
+//    self.window.rootViewController = 
+//}
+
 #pragma mark - Split view
 
 - (BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController {
@@ -57,6 +70,34 @@
     } else {
         return NO;
     }
+}
+
+-(void)showSplitView{
+    UISplitViewController *splitViewController = (UISplitViewController*)[mainStoryboard
+                                                                          instantiateViewControllerWithIdentifier: @"SplitViewController"];
+    //self.window.rootViewController = splitViewController;
+    
+    [UIView transitionFromView:self.window.rootViewController.view
+                        toView:splitViewController.view
+                      duration:0.65f
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    completion:^(BOOL finished){
+                        self.window.rootViewController = splitViewController;
+                    }];
+    
+}
+
+-(void)showSyncView{
+    SyncViewController *syncViewController = (SyncViewController*)[mainStoryboard
+                                                                          instantiateViewControllerWithIdentifier: @"SyncViewController"];
+    //self.window.rootViewController = syncViewController;
+    [UIView transitionFromView:self.window.rootViewController.view
+                        toView:syncViewController.view
+                      duration:0.65f
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    completion:^(BOOL finished){
+                        self.window.rootViewController = syncViewController;
+                    }];
 }
 
 @end

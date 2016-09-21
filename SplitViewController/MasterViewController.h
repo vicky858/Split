@@ -22,6 +22,7 @@
 @property (strong, nonatomic) DetailViewController *detailViewController;
 
 - (void)editBtnAction:(id)sender;
+- (IBAction)goToSyncAction:(id)sender;
 
 @end
 
