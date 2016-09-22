@@ -25,6 +25,10 @@
 }
 
 @end
+//https://coolestguidesontheplanet.com/get-apache-mysql-php-and-phpmyadmin-working-on-osx-10-11-el-capitan/
+//http://osxdaily.com/2012/09/02/start-apache-web-server-mac-os-x/
+//https://getgrav.org/blog/mac-os-x-apache-setup-multiple-php-versions
+//http://apple.stackexchange.com/questions/211015/el-capitan-apache-error-message-ah00526
 
 @interface DetailViewController () <ChartViewDelegate>
 
